@@ -1,0 +1,8 @@
+input/
+.DS_Store
+*.log
+node_modules/
+.playwright-mcp/
+CLAUDE.md
+plan.md
+todo.md
