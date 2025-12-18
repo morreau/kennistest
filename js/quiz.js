@@ -66,6 +66,14 @@ function showScreen(screenName) {
     } else {
         elements.progressContainer.classList.remove('visible');
     }
+
+    // Hide header on question and prompt screens to save vertical space
+    const header = document.querySelector('.header');
+    if (screenName === 'question' || screenName === 'prompt') {
+        header.classList.add('header--hidden');
+    } else {
+        header.classList.remove('header--hidden');
+    }
 }
 
 // Progress Bar

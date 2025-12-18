@@ -186,6 +186,10 @@ body {
     width: auto;
 }
 
+.header--hidden {
+    display: none;
+}
+
 /* --------------------------------------------------------------------------
    Progress Bar
    -------------------------------------------------------------------------- */
@@ -319,8 +323,9 @@ body {
 
 .welcome-info {
     display: flex;
-    gap: var(--space-8);
-    margin-bottom: var(--space-8);
+    gap: var(--space-6);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .info-item {
@@ -336,40 +341,6 @@ body {
     width: 24px;
     height: 24px;
     color: var(--color-primary);
-}
-
-.welcome-description {
-    font-size: var(--text-base);
-    color: var(--color-gray-600);
-    max-width: 540px;
-    line-height: var(--leading-relaxed);
-}
-
-.welcome-benefits {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-6);
-}
-
-.benefit-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-base);
-    color: var(--color-gray-600);
-}
-
-.benefit-check {
-    color: var(--color-success);
-    font-weight: 700;
-}
-
-.welcome-social-proof {
-    font-size: var(--text-sm);
-    color: var(--color-gray-500);
-    font-style: italic;
 }
 
 /* --------------------------------------------------------------------------
