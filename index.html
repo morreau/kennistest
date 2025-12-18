@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
     <div class="app">
@@ -208,6 +208,25 @@
                 </div>
             </section>
 
+            <!-- Screen: Prompt Feedback -->
+            <section class="screen" id="screenPromptFeedback">
+                <div class="screen__content">
+                    <h2 class="feedback-title">Feedback op je prompt</h2>
+                    <p class="feedback-intro">Dit is hoe we je prompt beoordeeld hebben:</p>
+                    <div class="feedback-criteria" id="feedbackCriteria">
+                        <!-- 5 criteria cards inserted by JS -->
+                    </div>
+                </div>
+                <div class="screen__footer">
+                    <button class="btn btn--primary btn--large" onclick="showResults()">
+                        Bekijk resultaten
+                        <svg class="btn-icon" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32z"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
             <!-- Screen: Results -->
             <section class="screen" id="screenResults">
                 <div class="screen__content screen__content--centered">
@@ -258,9 +277,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/questions.js?v=4"></script>
-    <script src="js/quiz.js?v=4"></script>
-    <script src="js/results.js?v=4"></script>
+    <script src="js/questions.js?v=5"></script>
+    <script src="js/quiz.js?v=5"></script>
+    <script src="js/results.js?v=5"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>

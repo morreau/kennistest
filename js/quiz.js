@@ -28,6 +28,7 @@ const screens = {
     question: document.getElementById('screenQuestion'),
     prompt: document.getElementById('screenPrompt'),
     loading: document.getElementById('screenLoading'),
+    promptFeedback: document.getElementById('screenPromptFeedback'),
     results: document.getElementById('screenResults')
 };
 
@@ -216,12 +217,12 @@ async function submitPrompt() {
         // Call Cloudflare Worker to evaluate prompt
         const score = await evaluatePrompt(prompt);
         state.promptScore = score;
-        showResults();
+        showPromptFeedback(score);
     } catch (error) {
         console.error('Error evaluating prompt:', error);
         // Fallback: use basic local evaluation
         state.promptScore = evaluatePromptLocally(prompt);
-        showResults();
+        showPromptFeedback(state.promptScore);
     } finally {
         state.isSubmitting = false;
     }
@@ -336,6 +337,46 @@ function evaluatePromptLocally(prompt) {
         effectiviteit: scores.effectiviteit,
         totaal
     };
+}
+
+// Show Prompt Feedback Screen
+function showPromptFeedback(evaluation) {
+    const criteria = ['duidelijkheid', 'specificiteit', 'context', 'verwachting', 'effectiviteit'];
+    const labels = {
+        duidelijkheid: 'Duidelijkheid',
+        specificiteit: 'Specificiteit',
+        context: 'Context',
+        verwachting: 'Verwachte output',
+        effectiviteit: 'Effectiviteit'
+    };
+    const descriptions = {
+        duidelijkheid: 'Is helder wat je vraagt?',
+        specificiteit: 'Zijn er concrete details?',
+        context: 'Is er voldoende achtergrond?',
+        verwachting: 'Weet AI wat je wilt?',
+        effectiviteit: 'Werkt dit in de praktijk?'
+    };
+
+    const container = document.getElementById('feedbackCriteria');
+    container.innerHTML = criteria.map(c => {
+        const score = evaluation[c]?.score ?? 0;
+        const feedback = evaluation[c]?.feedback || '';
+        const colorClass = score === 2 ? 'feedback-item--green' : score === 1 ? 'feedback-item--yellow' : 'feedback-item--red';
+        const scoreText = score === 2 ? 'Goed' : score === 1 ? 'Redelijk' : 'Ontbreekt';
+
+        return `
+            <div class="feedback-item ${colorClass}">
+                <div class="feedback-header">
+                    <span class="feedback-label">${labels[c]}</span>
+                    <span class="feedback-score">${scoreText}</span>
+                </div>
+                <p class="feedback-description">${descriptions[c]}</p>
+                <p class="feedback-text">${feedback}</p>
+            </div>
+        `;
+    }).join('');
+
+    showScreen('promptFeedback');
 }
 
 // Restart Quiz

@@ -7,85 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .landing {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: var(--space-xl);
-            text-align: center;
-        }
-        .landing-badge {
-            display: inline-block;
-            background-color: #EDE9FE;
-            color: #7C3AED;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: var(--space-sm) var(--space-md);
-            border-radius: var(--radius-full);
-            margin-bottom: var(--space-lg);
-        }
-        .landing-title {
-            font-family: var(--font-condensed);
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: var(--space-md);
-        }
-        .landing-description {
-            font-size: 1.125rem;
-            color: var(--color-gray-700);
-            margin-bottom: var(--space-xl);
-            line-height: 1.6;
-        }
-        .landing-list {
-            text-align: left;
-            background-color: var(--color-cream);
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--space-xl);
-        }
-        .landing-list h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: var(--space-md);
-        }
-        .landing-list ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .landing-list li {
-            padding: var(--space-sm) 0;
-            padding-left: var(--space-lg);
-            position: relative;
-            color: var(--color-gray-700);
-        }
-        .landing-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--color-success);
-            font-weight: 700;
-        }
-        .landing-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-        }
-        .landing-back {
-            margin-top: var(--space-xl);
-        }
-        .landing-back a {
-            color: var(--color-gray-500);
-            text-decoration: none;
-            font-size: 0.875rem;
-        }
-        .landing-back a:hover {
-            color: var(--color-black);
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
     <div class="app">
@@ -94,37 +16,53 @@
         </header>
 
         <main class="landing">
-            <span class="landing-badge">Gevorderd</span>
-            <h1 class="landing-title">Gevorderd Niveau</h1>
-            <p class="landing-description">
-                Indrukwekkend! Je beheerst AI-vaardigheden op gevorderd niveau.
-                Ontdek onze specialistische trainingen om je expertise verder uit te breiden.
-            </p>
-
-            <div class="landing-list">
-                <h3>Aanbevolen vervolgstappen:</h3>
-                <ul>
-                    <li>AI Workflow training voor procesoptimalisatie</li>
-                    <li>Context Bank training voor geavanceerd kennisbeheer</li>
-                    <li>Train-de-trainer programma om anderen te begeleiden</li>
-                    <li>Maatwerk trajecten voor jouw organisatie</li>
-                </ul>
+            <div class="landing-hero">
+                <div class="landing-hero-icon">
+                    <img src="assets/icons/rocket-duotone.svg" alt="">
+                </div>
+                <span class="landing-badge landing-badge--purple">Gevorderd</span>
+                <h1 class="landing-title">Gevorderd Niveau</h1>
+                <p class="landing-description">
+                    Indrukwekkend! Je beheerst AI-vaardigheden op gevorderd niveau.
+                    Ontdek onze specialistische trainingen om je expertise verder uit te breiden.
+                </p>
             </div>
 
-            <div class="landing-buttons">
-                <a href="https://copilot-academy.nl/contact" class="btn btn--success btn--large" target="_blank">
-                    Bespreek de mogelijkheden
-                    <svg class="btn-icon" viewBox="0 0 256 256" fill="currentColor">
-                        <path d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32z"/>
-                    </svg>
-                </a>
-                <a href="https://copilot-academy.nl" class="btn btn--secondary" target="_blank">
-                    Bekijk alle trainingen
-                </a>
+            <div class="landing-card">
+                <h3>Aanbevolen vervolgstappen:</h3>
+                <ul>
+                    <li>
+                        <img src="assets/icons/kanban-duotone.svg" class="bullet-icon" alt="">
+                        <span>AI Workflow training voor procesoptimalisatie</span>
+                    </li>
+                    <li>
+                        <img src="assets/icons/tree-structure-duotone.svg" class="bullet-icon" alt="">
+                        <span>Context Bank training voor geavanceerd kennisbeheer</span>
+                    </li>
+                    <li>
+                        <img src="assets/icons/graduation-cap-duotone.svg" class="bullet-icon" alt="">
+                        <span>Train-de-trainer programma om anderen te begeleiden</span>
+                    </li>
+                    <li>
+                        <img src="assets/icons/sparkle-duotone.svg" class="bullet-icon" alt="">
+                        <span>Maatwerk trajecten voor jouw organisatie</span>
+                    </li>
+                </ul>
+                <div class="landing-buttons">
+                    <a href="https://copilot-academy.nl/contact" class="btn btn--success btn--large" target="_blank">
+                        Bespreek de mogelijkheden
+                        <svg class="btn-icon" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32z"/>
+                        </svg>
+                    </a>
+                    <a href="https://copilot-academy.nl/training/" class="btn btn--secondary" target="_blank">
+                        Bekijk alle trainingen
+                    </a>
+                </div>
             </div>
 
             <div class="landing-back">
-                <a href="index.html">← Terug naar de test</a>
+                <a href="index.html">&larr; Terug naar de test</a>
             </div>
         </main>
     </div>

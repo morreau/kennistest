@@ -130,8 +130,8 @@ const promptExercise = {
 
 // Scoring thresholds for recommendations
 const scoreThresholds = {
-    session1: { min: 0, max: 60, label: "Start bij Sessie 1", key: "session1" },
-    session2: { min: 61, max: 80, label: "Start bij Sessie 2", key: "session2" },
+    session1: { min: 0, max: 60, label: "Start bij Workshop 1", key: "session1" },
+    session2: { min: 61, max: 80, label: "Start bij Workshop 2", key: "session2" },
     workflow: { min: 81, max: 95, label: "Klaar voor AI Workflow", key: "workflow" },
     advanced: { min: 96, max: 100, label: "Gevorderd niveau", key: "advanced" }
 };
@@ -139,16 +139,16 @@ const scoreThresholds = {
 // Recommendation messages
 const recommendations = {
     session1: {
-        badge: "Sessie 1",
+        badge: "Workshop 1",
         title: "Start bij AI Fundament",
-        text: "Je bouwt de beste basis door te beginnen bij Sessie 1. Hier leer je hoe AI werkt, effectief prompten en de basis van contextbeheer.",
-        trainingUrl: "sessie1.html"
+        text: "Je bouwt de beste basis door te beginnen bij Workshop 1. Hier leer je hoe AI werkt, effectief prompten en de basis van contextbeheer.",
+        trainingUrl: "workshop1.html"
     },
     session2: {
-        badge: "Sessie 2",
+        badge: "Workshop 2",
         title: "Start bij AI Context",
-        text: "Je begrijpt de basis! In Sessie 2 leer je hoe je context effectief inzet en een AI-werkomgeving opbouwt.",
-        trainingUrl: "sessie2.html"
+        text: "Je begrijpt de basis! In Workshop 2 leer je hoe je context effectief inzet en een AI-werkomgeving opbouwt.",
+        trainingUrl: "workshop2.html"
     },
     workflow: {
         badge: "AI Workflow",
