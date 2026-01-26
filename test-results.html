@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results Layout | Copilot Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=16">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <img src="assets/copilot-academy-logo.svg" alt="Copilot Academy" class="logo">
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- Screen: Results (always active for testing) -->
+            <section class="screen screen--active" id="screenResults">
+                <div class="screen__content screen__content--centered">
+                    <div class="results-score">
+                        <svg class="score-ring" viewBox="0 0 120 120">
+                            <circle class="score-ring__bg" cx="60" cy="60" r="54" />
+                            <circle class="score-ring__fill" id="scoreRing" cx="60" cy="60" r="54" style="stroke-dashoffset: 169.64; stroke: #E85A4F;" />
+                        </svg>
+                        <div class="score-value" id="scoreValue">50</div>
+                        <div class="score-label">punten</div>
+                    </div>
+
+                    <div class="results-recommendation" id="resultsRecommendation">
+                        <div class="recommendation-badge" id="recommendationBadge" style="display: none;"></div>
+                        <h2 class="recommendation-title" id="recommendationTitle">Start bij Workshop 1</h2>
+                        <p class="recommendation-text" id="recommendationText">De basis versterken helpt je het meeste. In Workshop 1 leer je hoe AI werkt, effectief prompten en de basis van contextbeheer.</p>
+
+                        <!-- Weak areas container -->
+                        <div id="weakAreasContainer" class="weak-areas">
+                            <div class="weak-areas__header">Jouw aandachtspunten:</div>
+                            <ul class="weak-areas__list">
+                                <li><strong>AI Begrip</strong>: Hoe AI werkt, hallucinaties herkennen en output verifiëren</li>
+                                <li><strong>Context & Prompting</strong>: Context effectief inzetten en specifieke prompts schrijven</li>
+                            </ul>
+
+                            <!-- View mistakes link -->
+                            <button class="view-mistakes-link" onclick="openTestDrawer()">
+                                Bekijk je 8 fouten
+                                <svg viewBox="0 0 256 256" fill="currentColor">
+                                    <path d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="results-breakdown" id="resultsBreakdown">
+                        <h3 class="breakdown-title">Jouw scores</h3>
+                        <div class="breakdown-items" id="breakdownItems">
+                            <div class="breakdown-item">
+                                <span class="breakdown-item__label">AI Begrip</span>
+                                <div class="breakdown-item__bar">
+                                    <div class="breakdown-item__fill" style="width: 25%"></div>
+                                </div>
+                                <span class="breakdown-item__score">1/4</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-item__label">Context & Prompting</span>
+                                <div class="breakdown-item__bar">
+                                    <div class="breakdown-item__fill" style="width: 0%"></div>
+                                </div>
+                                <span class="breakdown-item__score">0/4</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-item__label">Praktijkopdracht</span>
+                                <div class="breakdown-item__bar">
+                                    <div class="breakdown-item__fill" style="width: 50%"></div>
+                                </div>
+                                <span class="breakdown-item__score">5/10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen__footer screen__footer--column">
+                    <a href="workshop1.html" class="btn btn--success btn--large" id="btnTraining" target="_blank">
+                        Bekijk aanbevolen training
+                        <svg class="btn-icon" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32z"/>
+                        </svg>
+                    </a>
+                    <button class="btn btn--secondary">
+                        <svg class="btn-icon btn-icon--left" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M224 152v56a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16v-56a8 8 0 0 1 16 0v56h160v-56a8 8 0 0 1 16 0zm-101.66 5.66a8 8 0 0 0 11.32 0l40-40a8 8 0 0 0-11.32-11.32L136 132.69V40a8 8 0 0 0-16 0v92.69l-26.34-26.35a8 8 0 0 0-11.32 11.32z"/>
+                        </svg>
+                        Download resultaat
+                    </button>
+                    <button class="btn btn--link">
+                        Opnieuw doen
+                    </button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Mistakes Drawer -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeTestDrawer()"></div>
+    <aside class="drawer" id="mistakesDrawer">
+        <header class="drawer__header">
+            <button class="drawer__close" onclick="closeTestDrawer()">
+                <svg viewBox="0 0 256 256" fill="currentColor" width="20" height="20">
+                    <path d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8z"/>
+                </svg>
+                Sluiten
+            </button>
+            <h2 class="drawer__title">Je fouten (<span id="mistakeCount">8</span>)</h2>
+        </header>
+        <div class="drawer__content" id="drawerContent">
+            <!-- Static test content -->
+            <div class="mistake-card">
+                <div class="mistake-card__question">Wat is een taalmodel zoals ChatGPT of Copilot?</div>
+                <div class="mistake-answer mistake-answer--wrong">
+                    <span class="mistake-icon">✗</span>
+                    <span>A. Een systeem dat informatie ophaalt uit een actuele database</span>
+                </div>
+                <div class="mistake-answer mistake-answer--correct">
+                    <span class="mistake-icon">✓</span>
+                    <span>B. Een voorspellingsmachine die woord voor woord tekst genereert</span>
+                </div>
+                <div class="mistake-card__explanation">→ AI genereert tekst door woord voor woord te voorspellen, niet door databases te raadplegen.</div>
+            </div>
+
+            <div class="mistake-card">
+                <div class="mistake-card__question">Wat is een 'hallucinatie' bij AI?</div>
+                <div class="mistake-answer mistake-answer--wrong">
+                    <span class="mistake-icon">✗</span>
+                    <span>A. Wanneer AI verouderde informatie gebruikt</span>
+                </div>
+                <div class="mistake-answer mistake-answer--correct">
+                    <span class="mistake-icon">✓</span>
+                    <span>B. Wanneer AI overtuigend maar incorrect antwoordt</span>
+                </div>
+                <div class="mistake-card__explanation">→ Hallucinaties zijn overtuigende maar foutieve antwoorden.</div>
+            </div>
+
+            <div class="mistake-card">
+                <div class="mistake-card__question">Hoe betrouwbaar zijn AI-antwoorden bij feitelijke vragen?</div>
+                <div class="mistake-answer mistake-answer--wrong">
+                    <span class="mistake-icon">✗</span>
+                    <span>A. Vrijwel altijd correct dankzij grote trainingsdata</span>
+                </div>
+                <div class="mistake-answer mistake-answer--correct">
+                    <span class="mistake-icon">✓</span>
+                    <span>B. Meestal correct, maar regelmatige verificatie is nodig</span>
+                </div>
+                <div class="mistake-card__explanation">→ AI is vaak correct maar kan fouten maken. Verificatie blijft nodig.</div>
+            </div>
+
+            <div class="mistake-card">
+                <div class="mistake-card__question">Waarom is het belangrijk om context mee te geven aan AI?</div>
+                <div class="mistake-answer mistake-answer--wrong">
+                    <span class="mistake-icon">✗</span>
+                    <span>A. AI geeft dan langere en completere antwoorden</span>
+                </div>
+                <div class="mistake-answer mistake-answer--correct">
+                    <span class="mistake-icon">✓</span>
+                    <span>B. AI kent jouw organisatie en situatie niet</span>
+                </div>
+                <div class="mistake-card__explanation">→ AI kent jouw specifieke situatie niet - context geeft richting.</div>
+            </div>
+
+            <div class="mistake-card">
+                <div class="mistake-card__question">Je wilt dat AI een rapport samenvat voor het MT. Wat is het belangrijkste om mee te geven?</div>
+                <div class="mistake-answer mistake-answer--wrong">
+                    <span class="mistake-icon">✗</span>
+                    <span>A. De gewenste lengte en opmaak van de samenvatting</span>
+                </div>
+                <div class="mistake-answer mistake-answer--correct">
+                    <span class="mistake-icon">✓</span>
+                    <span>B. Welke informatie relevant is voor de lezer</span>
+                </div>
+                <div class="mistake-card__explanation">→ Relevantie voor de lezer bepaalt wat belangrijk is.</div>
+            </div>
+
+            <div class="mistake-card">
+                <div class="mistake-card__question">Je vraagt AI om feedback op een projectvoorstel. Wat is het belangrijkste om mee te geven?</div>
+                <div class="mistake-answer mistake-answer--wrong">
+                    <span class="mistake-icon">✗</span>
+                    <span>A. Dat AI eerlijk en kritisch mag zijn</span>
+                </div>
+                <div class="mistake-answer mistake-answer--correct">
+                    <span class="mistake-icon">✓</span>
+                    <span>B. Waar het voorstel aan moet voldoen</span>
+                </div>
+                <div class="mistake-card__explanation">→ Criteria voor succes bepalen wat goede feedback is.</div>
+            </div>
+
+            <div class="mistake-card">
+                <div class="mistake-card__question">Je gebruikt AI-output voor een belangrijk werkdocument. Wat is de belangrijkste stap?</div>
+                <div class="mistake-answer mistake-answer--wrong">
+                    <span class="mistake-icon">✗</span>
+                    <span>A. Direct gebruiken als het logisch klinkt</span>
+                </div>
+                <div class="mistake-answer mistake-answer--correct">
+                    <span class="mistake-icon">✓</span>
+                    <span>B. Controleren of feiten kloppen met betrouwbare bronnen</span>
+                </div>
+                <div class="mistake-card__explanation">→ Feiten controleren via betrouwbare bronnen is essentieel.</div>
+            </div>
+
+            <div class="mistake-card">
+                <div class="mistake-card__question">AI schrijft een te algemene e-mail. Wat ontbrak waarschijnlijk in je prompt?</div>
+                <div class="mistake-answer mistake-answer--wrong">
+                    <span class="mistake-icon">✗</span>
+                    <span>A. Een woordlimiet en gewenste opmaak</span>
+                </div>
+                <div class="mistake-answer mistake-answer--correct">
+                    <span class="mistake-icon">✓</span>
+                    <span>B. De specifieke situatie en context</span>
+                </div>
+                <div class="mistake-card__explanation">→ Specifieke situatie en context ontbreekt meestal bij te algemene output.</div>
+            </div>
+        </div>
+    </aside>
+
+    <script>
+        // Simple drawer functions for test page
+        function openTestDrawer() {
+            document.getElementById('mistakesDrawer').classList.add('open');
+            document.getElementById('drawerOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeTestDrawer() {
+            document.getElementById('mistakesDrawer').classList.remove('open');
+            document.getElementById('drawerOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>
