@@ -62,8 +62,8 @@ function calculateScores() {
         }
     });
 
-    // Normalize MC score to 80 points max
-    const normalizedMcScore = Math.round((mcScore / maxMcScore) * 80);
+    // Normalize MC score to 70 points max
+    const normalizedMcScore = Math.round((mcScore / maxMcScore) * 70);
 
     // Calculate prompt score (0-20 points)
     let promptScore = 0;

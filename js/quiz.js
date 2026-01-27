@@ -284,7 +284,7 @@ function evaluatePromptLocally(prompt) {
     }
 
     // Check for SPECIFICITEIT (specific details)
-    const detailKeywords = ['kwartaal', 'rapport', 'mt', 'overleg', 'sales', 'klant', 'markt', 'cijfers', 'resultaten', 'afdeling', 'team', 'management', 'directie'];
+    const detailKeywords = ['rapport', 'collega', 'delen', 'punten', 'samenvatting', 'belangrijkste', 'informatie', 'overzicht'];
     const detailCount = detailKeywords.filter(kw => promptLower.includes(kw)).length;
     if (detailCount >= 3) {
         scores.specificiteit.score = 2;

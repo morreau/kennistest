@@ -16,7 +16,8 @@ const questions = [
             { letter: "C", text: "Een kennissysteem dat geverifieerde bronnen raadpleegt" },
             { letter: "D", text: "Een digitale assistent met toegang tot bedrijfsinformatie" }
         ],
-        weight: 1.0
+        weight: 1.0,
+        explanation: "AI genereert tekst door woord voor woord te voorspellen, niet door databases te raadplegen."
     },
     {
         id: 2,
@@ -26,10 +27,11 @@ const questions = [
         answers: [
             { letter: "A", text: "Wanneer AI verouderde informatie gebruikt" },
             { letter: "B", text: "Wanneer AI overtuigend maar incorrect antwoordt", correct: true },
-            { letter: "C", text: "Wanneer AI toegeeft iets niet te weten" },
-            { letter: "D", text: "Wanneer AI door beveiligingslimieten blokkeert" }
+            { letter: "C", text: "Wanneer AI een vraag verkeerd interpreteert" },
+            { letter: "D", text: "Wanneer AI informatie uit andere contexten mengt" }
         ],
-        weight: 1.0
+        weight: 1.0,
+        explanation: "Hallucinaties zijn overtuigende maar foutieve antwoorden - niet verouderde info of verkeerde interpretaties."
     },
     {
         id: 3,
@@ -42,7 +44,8 @@ const questions = [
             { letter: "C", text: "Alleen betrouwbaar bij vragen over bekende onderwerpen" },
             { letter: "D", text: "Even betrouwbaar als Wikipedia of andere online bronnen" }
         ],
-        weight: 1.0
+        weight: 1.0,
+        explanation: "AI is vaak correct maar kan fouten maken. Verificatie blijft nodig, ook bij bekende onderwerpen."
     },
 
     // === CONTEXT & PROMPTING (5 questions) ===
@@ -52,12 +55,13 @@ const questions = [
         categoryKey: "context",
         question: "Waarom is het belangrijk om context mee te geven aan AI?",
         answers: [
-            { letter: "A", text: "AI werkt sneller met meer tekst" },
+            { letter: "A", text: "AI geeft dan langere en completere antwoorden" },
             { letter: "B", text: "AI kent jouw organisatie en situatie niet", correct: true },
-            { letter: "C", text: "Het is verplicht door de AI-wetgeving" },
-            { letter: "D", text: "Anders geeft AI geen antwoord" }
+            { letter: "C", text: "AI kan anders geen goede toon aanslaan" },
+            { letter: "D", text: "AI heeft context nodig om vragen te begrijpen" }
         ],
-        weight: 1.2
+        weight: 1.2,
+        explanation: "AI kent jouw specifieke situatie niet - context geeft richting, niet alleen lengte of toon."
     },
     {
         id: 5,
@@ -70,7 +74,8 @@ const questions = [
             { letter: "C", text: "Een rol zoals 'je bent een business analist'" },
             { letter: "D", text: "Voorbeelden van goede samenvattingen" }
         ],
-        weight: 1.3
+        weight: 1.3,
+        explanation: "Relevantie voor de lezer bepaalt wat belangrijk is - niet lengte, rol of voorbeelden."
     },
     {
         id: 6,
@@ -80,10 +85,11 @@ const questions = [
         answers: [
             { letter: "A", text: "Dat AI eerlijk en kritisch mag zijn" },
             { letter: "B", text: "Waar het voorstel aan moet voldoen", correct: true },
-            { letter: "C", text: "Hoeveel ervaring AI heeft met dit onderwerp" },
+            { letter: "C", text: "De feedback die je eerder van anderen kreeg" },
             { letter: "D", text: "Dat AI stap voor stap moet analyseren" }
         ],
-        weight: 1.3
+        weight: 1.3,
+        explanation: "Criteria voor succes bepalen wat goede feedback is - niet alleen eerlijkheid of stapsgewijs werken."
     },
     {
         id: 7,
@@ -96,7 +102,8 @@ const questions = [
             { letter: "C", text: "Vragen of AI zeker is van het antwoord" },
             { letter: "D", text: "De prompt herhalen voor een tweede mening" }
         ],
-        weight: 1.2
+        weight: 1.2,
+        explanation: "Feiten controleren via betrouwbare bronnen is essentieel - AI kan geen zekerheid geven over eigen output."
     },
     {
         id: 8,
@@ -109,13 +116,14 @@ const questions = [
             { letter: "C", text: "Een rol zoals 'schrijf als expert'" },
             { letter: "D", text: "De instructie om professioneel te schrijven" }
         ],
-        weight: 1.3
+        weight: 1.3,
+        explanation: "Specifieke situatie en context ontbreekt meestal bij te algemene output - niet opmaak of rol."
     }
 ];
 
 // Prompt exercise configuration
 const promptExercise = {
-    scenario: "Je wilt een kwartaalrapport samenvatten voor het MT-overleg. Het rapport bevat sales cijfers, klanttevredenheid en marktanalyse.",
+    scenario: "Je hebt een uitgebreid rapport ontvangen en moet de belangrijkste punten delen met collega's.",
     evaluationCriteria: {
         taak: { maxScore: 2, description: "Duidelijke actie/opdracht" },
         context: { maxScore: 2, description: "Achtergrondinformatie" },
@@ -125,42 +133,28 @@ const promptExercise = {
     },
     maxScore: 10,
     // Multiplier to convert 0-10 to 0-20 points
-    scoreMultiplier: 2
+    scoreMultiplier: 3
 };
 
 // Scoring thresholds for recommendations
 const scoreThresholds = {
-    session1: { min: 0, max: 60, label: "Start bij Workshop 1", key: "session1" },
-    session2: { min: 61, max: 80, label: "Start bij Workshop 2", key: "session2" },
-    workflow: { min: 81, max: 95, label: "Klaar voor AI Workflow", key: "workflow" },
-    advanced: { min: 96, max: 100, label: "Gevorderd niveau", key: "advanced" }
+    session1: { min: 0, max: 70, label: "Start bij Workshop 1", key: "session1" },
+    session2: { min: 71, max: 100, label: "Klaar voor Workshop 2", key: "session2" }
 };
 
 // Recommendation messages
 const recommendations = {
     session1: {
         badge: "Workshop 1",
-        title: "Start bij AI Fundament",
-        text: "Je bouwt de beste basis door te beginnen bij Workshop 1. Hier leer je hoe AI werkt, effectief prompten en de basis van contextbeheer.",
+        title: "Start bij Workshop 1",
+        text: "De basis versterken helpt je het meeste. In Workshop 1 leer je hoe AI werkt, effectief prompten en de basis van contextbeheer.",
         trainingUrl: "workshop1.html"
     },
     session2: {
         badge: "Workshop 2",
-        title: "Start bij AI Context",
-        text: "Je begrijpt de basis! In Workshop 2 leer je hoe je context effectief inzet en een AI-werkomgeving opbouwt.",
+        title: "Klaar voor Workshop 2",
+        text: "Je hebt voldoende basiskennis. In Workshop 2 leer je hoe je context effectief inzet en een AI-werkomgeving opbouwt.",
         trainingUrl: "workshop2.html"
-    },
-    workflow: {
-        badge: "AI Workflow",
-        title: "Klaar voor AI Workflow",
-        text: "Uitstekend! Je hebt een goede basis en kunt direct starten met de AI Workflow training om processen te optimaliseren.",
-        trainingUrl: "workflow.html"
-    },
-    advanced: {
-        badge: "Gevorderd",
-        title: "Gevorderd niveau",
-        text: "Indrukwekkend! Je beheert AI-vaardigheden op gevorderd niveau. Overweeg AI Workflow of Context Bank training.",
-        trainingUrl: "gevorderd.html"
     }
 };
 
