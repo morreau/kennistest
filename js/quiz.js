@@ -247,7 +247,7 @@ async function evaluatePrompt(prompt) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt })
+            body: JSON.stringify({ prompt, scenario: promptExercise.scenario })
         });
 
         if (!response.ok) {
